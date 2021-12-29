@@ -1,6 +1,8 @@
 package application;
 
 public class App {
-	Hangman game = new Hangman();
-	game.run();
+	public static void main(String[] args) {
+		Hangman game = new Hangman();
+		game.run();
+	}
 }

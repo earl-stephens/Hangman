@@ -2,7 +2,8 @@ package application;
 
 public class Hangman {
 	
-	private boolean running = true;
+	private boolean running = false;
+	private RandomWord word = new RandomWord();
 	
 	public void run() {
 		do {
@@ -20,15 +21,18 @@ public class Hangman {
 	}
 	 */
 	
-	public void displayWord() {
-		System.out.println("displayWord");
+	/* need a class that picks a random word
+	 * and displays letters/spaces as needed
+	 */
+	private void displayWord() {
+		System.out.println(word);
 	}
 	
-	public void getUserInput() {
-		System.out.println("displayWord");
+	private void getUserInput() {
+		System.out.println("getUserInput");
 	}
 	
-	public void checkUserInput() {
-		System.out.println("displayWord");
+	private void checkUserInput() {
+		System.out.println("checkUserInput");
 	}
 }
