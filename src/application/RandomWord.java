@@ -22,15 +22,18 @@ public class RandomWord {
 	}
 	
 	public String toString() {
-		String text = "";
 
+		StringBuilder sb1 = new StringBuilder();
 		for(int i = 0; i < characters.length; i++) {
 			if(characters[i] == '\u0000') {
-				text = text + "_ ";
+				//text = text + "_ ";
+				sb1.append("_").append(" ");
 			} else {
-				text = text + characters[i] + " ";
+				//text = text + characters[i] + " ";
+				sb1.append(characters[i]).append(" ");
 			}
 		}
+		String text = sb1.toString();
 		return text;
 	}
 	
@@ -49,4 +52,6 @@ public class RandomWord {
 	 * outputs 'g'
 	 */
 
+	//StringBuilder is a Java class used to concatenate strings
+	// The string class is final - it can't be changed
 }
