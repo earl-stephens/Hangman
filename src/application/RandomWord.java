@@ -11,18 +11,30 @@ public class RandomWord {
 	private String chosenWord;
 	//This is an instance variable in case it's needed again elsewhere in the class
 	private Random randomText = new Random();
+	private char[] characters;
 	
 	//This constructor generates a random word as soon as the object
 	//is instantiated
 	public RandomWord() {
 		chosenWord = words[randomText.nextInt(words.length)];
+		//now going to initialize the characters array to the same length as chosenWord
+		characters = new char[chosenWord.length()];
 	}
 	
 	public String toString() {
-		return chosenWord;
-		
-		
+		String text = "";
+
+		characters[2] = 'b';
+		for(int i = 0; i < characters.length; i++) {
+			if(characters[i] == '\u0000') {
+				text = text + "_ ";
+			} else {
+				text = text + characters[i] + " ";
+			}
+		}
+		return text;
 	}
+	
 	/*char is another primitive datatype.  holds a single unicode character
 	initialize a char with single quotes
 	default for char is \u0000
