@@ -24,7 +24,6 @@ public class RandomWord {
 	public String toString() {
 		String text = "";
 
-		characters[2] = 'b';
 		for(int i = 0; i < characters.length; i++) {
 			if(characters[i] == '\u0000') {
 				text = text + "_ ";
