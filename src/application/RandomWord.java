@@ -25,6 +25,11 @@ public class RandomWord {
 
 		StringBuilder sb1 = new StringBuilder();
 		for(int i = 0; i < characters.length; i++) {
+			//sb1 = characters[i] == '\u0000' ? sb1.append("_ "): sb1.append(characters[i]).append(" ");
+			sb1.append(characters[i] == '\u0000' ? "_": characters[i]);
+			sb1.append(' ');
+			/*
+			 * The above replaces all of this below:
 			if(characters[i] == '\u0000') {
 				//text = text + "_ ";
 				sb1.append("_").append(" ");
@@ -32,6 +37,7 @@ public class RandomWord {
 				//text = text + characters[i] + " ";
 				sb1.append(characters[i]).append(" ");
 			}
+			*/
 		}
 		String text = sb1.toString();
 		return text;
@@ -54,4 +60,8 @@ public class RandomWord {
 
 	//StringBuilder is a Java class used to concatenate strings
 	// The string class is final - it can't be changed
+	
+	/* the ternary operator takes 3 operands
+	 * (boolean ? outputForTrue: outputForFalse)
+	 */
 }
