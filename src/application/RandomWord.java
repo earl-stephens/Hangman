@@ -76,6 +76,12 @@ public class RandomWord {
 	}
 	
 	public boolean checkGuess() {
+		for(char c: characters) {
+			if(c == '\u0000') {
+				return false;
+			}
+		} return true;
+		/* refactor
 		int counter = 0;
 		for(int i = 0; i < characters.length; i++) {
 			if(characters[i] == '\u0095' || characters[i] == '\u0000') {
@@ -86,5 +92,6 @@ public class RandomWord {
 		}
 		boolean hasWon = counter == characters.length ? true: false;
 		return hasWon;
+		*/
 	}
 }

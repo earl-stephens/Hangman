@@ -48,9 +48,9 @@ public class Hangman {
 		//check if the word is complete
 		//can set a boolean is the word is complete
 		boolean winner = word.checkGuess();
-		System.out.println(winner);
-		if(winner == true) {
+		if(winner) {
 			System.out.println("You won!");
+			running = false;
 		}
 	}
 	
