@@ -51,4 +51,10 @@ public class Hangman {
 	private void displayWord() {
 		System.out.println(word);
 	}
+	
+	//Java doesn't have a destructor method
+	//Won't work if there's a system.exit somewhere
+	public void close() {
+		scanner.close();
+	}
 }
