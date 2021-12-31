@@ -1,9 +1,12 @@
 package application;
 
+import java.util.Scanner;
+
 public class Hangman {
 	
-	private boolean running = false;
+	private boolean running = true;
 	private RandomWord word = new RandomWord();
+	private Scanner scanner = new Scanner(System.in);
 	
 	public void run() {
 		do {
@@ -24,15 +27,28 @@ public class Hangman {
 	/* need a class that picks a random word
 	 * and displays letters/spaces as needed
 	 */
-	private void displayWord() {
-		System.out.println(word);
-	}
+
 	
 	private void getUserInput() {
-		System.out.println("getUserInput");
+		//Ask user to enter a character
+		//Get the character as a string
+		//Pass the character to RandomWord as the
+		//argument to a method
+		
+		System.out.println("Enter your guess as a single letter: ");
+
+		char c;
+		String inputGuess = scanner.nextLine();
+		//scanner.close();
+		c = inputGuess.charAt(0);
+		word.addGuess(c);
 	}
 	
 	private void checkUserInput() {
 		System.out.println("checkUserInput");
+	}
+	
+	private void displayWord() {
+		System.out.println(word);
 	}
 }

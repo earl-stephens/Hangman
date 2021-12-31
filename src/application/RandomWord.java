@@ -64,4 +64,13 @@ public class RandomWord {
 	/* the ternary operator takes 3 operands
 	 * (boolean ? outputForTrue: outputForFalse)
 	 */
+	
+	public void addGuess(char c) {
+		//fill in c wherever its found in the character array
+		for(int i = 0; i < chosenWord.length(); i++) {
+			if(c == chosenWord.charAt(i)) {
+				characters[i] = c;
+			}
+		}
+	};
 }
