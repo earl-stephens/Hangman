@@ -45,10 +45,22 @@ public class Hangman {
 	}
 	
 	private void checkUserInput() {
-		System.out.println("checkUserInput");
+		//check if the word is complete
+		//can set a boolean is the word is complete
+		boolean winner = word.checkGuess();
+		if(winner) {
+			System.out.println("You won!");
+			running = false;
+		}
 	}
 	
 	private void displayWord() {
 		System.out.println(word);
+	}
+	
+	//Java doesn't have a destructor method
+	//Won't work if there's a system.exit somewhere
+	public void close() {
+		scanner.close();
 	}
 }

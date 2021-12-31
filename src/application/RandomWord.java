@@ -12,6 +12,7 @@ public class RandomWord {
 	//This is an instance variable in case it's needed again elsewhere in the class
 	private Random randomText = new Random();
 	private char[] characters;
+	//private boolean hasWon = true;
 	
 	//This constructor generates a random word as soon as the object
 	//is instantiated
@@ -72,5 +73,25 @@ public class RandomWord {
 				characters[i] = c;
 			}
 		}
-	};
+	}
+	
+	public boolean checkGuess() {
+		for(char c: characters) {
+			if(c == '\u0000') {
+				return false;
+			}
+		} return true;
+		/* refactor
+		int counter = 0;
+		for(int i = 0; i < characters.length; i++) {
+			if(characters[i] == '\u0095' || characters[i] == '\u0000') {
+				counter = counter + 0;
+			} else {
+				counter += 1;
+			}
+		}
+		boolean hasWon = counter == characters.length ? true: false;
+		return hasWon;
+		*/
+	}
 }
