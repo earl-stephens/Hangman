@@ -7,12 +7,16 @@ public class Hangman {
 	private boolean running = true;
 	private RandomWord word = new RandomWord();
 	private Scanner scanner = new Scanner(System.in);
+	private int numberOfTries = 5;
+	
+	private int numberOfAttempts = 0;
 	
 	public void run() {
 		do {
 			displayWord();
 			getUserInput();
 			checkUserInput();
+			getTryNumber();
 		} while(running);
 	}
 	
@@ -62,5 +66,11 @@ public class Hangman {
 	//Won't work if there's a system.exit somewhere
 	public void close() {
 		scanner.close();
+	}
+	
+	private void getTryNumber() {
+		if(word.getFreeTry() == numberOfTries) {
+			running = false;
+		}
 	}
 }
