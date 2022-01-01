@@ -72,10 +72,11 @@ public class RandomWord {
 	
 	public void addGuess(char c) {
 		//fill in c wherever its found in the character array
+		System.out.println("This is try number: " + freeTry);
 		for(int i = 0; i < chosenWord.length(); i++) {
 			if(c == chosenWord.charAt(i)) {
 				characters[i] = c;
-				freeTry -= 1;
+				freeTry += 0;
 			} 
 		}
 		freeTry += 1;
