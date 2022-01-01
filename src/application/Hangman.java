@@ -7,12 +7,14 @@ public class Hangman {
 	private boolean running = true;
 	private RandomWord word = new RandomWord();
 	private Scanner scanner = new Scanner(System.in);
+	private int numberOfTries = 5;
 	
 	public void run() {
 		do {
 			displayWord();
 			getUserInput();
 			checkUserInput();
+			getTryNumber();
 		} while(running);
 	}
 	
@@ -39,9 +41,12 @@ public class Hangman {
 
 		char c;
 		String inputGuess = scanner.nextLine();
-		//scanner.close();
-		c = inputGuess.charAt(0);
-		word.addGuess(c);
+		if(inputGuess.equals("")) {
+			System.out.println("Enter your guess as a single letter: ");
+		} else {
+			c = inputGuess.charAt(0);
+			word.addGuess(c);
+		}
 	}
 	
 	private void checkUserInput() {
@@ -62,5 +67,11 @@ public class Hangman {
 	//Won't work if there's a system.exit somewhere
 	public void close() {
 		scanner.close();
+	}
+	
+	private void getTryNumber() {
+		if(word.getFreeTry() == numberOfTries) {
+			running = false;
+		}
 	}
 }
