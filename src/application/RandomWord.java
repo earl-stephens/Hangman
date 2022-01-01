@@ -12,11 +12,11 @@ public class RandomWord {
 	//This is an instance variable in case it's needed again elsewhere in the class
 	private Random randomText = new Random();
 	private char[] characters;
-	private int freeTry = 0;
+	//private boolean guessCorrect = false;
 	
-	public int getFreeTry() {
-		return freeTry;
-	}
+	//public int getFreeTry() {
+	//	return freeTry;
+	//}
 	
 	//This constructor generates a random word as soon as the object
 	//is instantiated
@@ -70,25 +70,36 @@ public class RandomWord {
 	 * (boolean ? outputForTrue: outputForFalse)
 	 */
 	
-	public void addGuess(char c) {
+	public boolean addGuess(char c) {
 		//fill in c wherever its found in the character array
-		System.out.println("This is try number: " + freeTry);
+		boolean guessCorrect = false;
 		for(int i = 0; i < chosenWord.length(); i++) {
 			if(c == chosenWord.charAt(i)) {
 				characters[i] = c;
-				freeTry += 0;
+				guessCorrect = true;
 			} 
-		}
-		freeTry += 1;
+		} return guessCorrect;
 	}
 	
-	public boolean checkGuess() {
+	public boolean checkGuess(char c) {
+		boolean correct = false;
+		for(int i = 0; i < chosenWord.length(); i++) {
+			if(c == chosenWord.charAt(i)) {
+				characters[i] = c;
+				correct = true;
+			}
+		}
+		return correct;
+	}
+		public boolean isComplete() {
 		for(char c: characters) {
 			if(c == '\u0000') {
 				return false;
 			}
 		} 
 		return true;
+		}
+		
 		/* refactor
 		int counter = 0;
 		for(int i = 0; i < characters.length; i++) {
@@ -103,4 +114,4 @@ public class RandomWord {
 		*/
 	}
 	
-}
+
