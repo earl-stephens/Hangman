@@ -8,13 +8,13 @@ public class Hangman {
 	private RandomWord word = new RandomWord();
 	private Scanner scanner = new Scanner(System.in);
 	private int numberOfTries = 5;
+	private char lastGuess;
 	
 	public void run() {
 		do {
 			displayWord();
 			getUserInput();
 			checkUserInput();
-			getTryNumber();
 		} while(running);
 	}
 	
@@ -36,30 +36,38 @@ public class Hangman {
 		//Get the character as a string
 		//Pass the character to RandomWord as the
 		//argument to a method
-		
 		System.out.println("Enter your guess as a single letter: ");
 
-		char c;
 		String inputGuess = scanner.nextLine();
 		if(inputGuess.equals("")) {
 			System.out.println("Enter your guess as a single letter: ");
 		} else {
-			c = inputGuess.charAt(0);
-			word.addGuess(c);
+			lastGuess = inputGuess.charAt(0);
 		}
 	}
 	
 	private void checkUserInput() {
 		//check if the word is complete
 		//can set a boolean is the word is complete
-		boolean winner = word.checkGuess();
-		if(winner) {
+		boolean isCorrect = word.checkGuess(lastGuess);
+		if(isCorrect) {
+			if(word.isComplete()) {
 			System.out.println("You won!");
 			running = false;
+			
+			}
+		} else {
+			numberOfTries--;
+			
+			if(numberOfTries == 0) {
+				System.out.println("You have lost!");
+				running = false;
+			}
 		}
 	}
 	
 	private void displayWord() {
+		System.out.println("Remaining tries: " + numberOfTries);
 		System.out.println(word);
 	}
 	
@@ -68,10 +76,5 @@ public class Hangman {
 	public void close() {
 		scanner.close();
 	}
-	
-	private void getTryNumber() {
-		if(word.getFreeTry() == numberOfTries) {
-			running = false;
-		}
-	}
+
 }
